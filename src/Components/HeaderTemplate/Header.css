@@ -1,0 +1,27 @@
+header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    --color: #0a6672;
+  }
+  
+  header .tools {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding-left: 1100px;
+    padding-top: 10px;
+  }
+  
+  header .tools .icon {
+    color: rgb(200, 8, 142);
+    font-size: 40px;
+    cursor: pointer;
+  }
+  header .tools .icon:hover {
+    color: var(--color);
+  }
+  
