@@ -1,0 +1,33 @@
+.card1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    gap: 5px;
+    border-right: 2px solid rgba(255, 255, 255, 0.586);
+  }
+  
+  .card1:nth-child(3) {
+    border-right: none;
+  }
+  
+  .card1 .icon1 {
+    position: relative;
+    font-size: 20px;
+    color: white;
+  }
+  
+  .card1 .title1 {
+    font-size: 18px;
+    color: white;
+    font-weight: 400;
+  }
+  
+  .card1 .value1 {
+    color: lime;
+    display: flex;
+    gap: 10px;
+  }
+  

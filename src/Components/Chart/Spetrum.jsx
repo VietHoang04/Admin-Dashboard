@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useContext } from "react"
+import { ThemeContext } from '../../ThemeContext';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -28,7 +30,6 @@ const options = {
         text: 'chanels', 
         font: {
           size: 18,
-          style: 'Bold',
           family: 'Helvetica Neue',
         }
       },
@@ -39,10 +40,9 @@ const options = {
     y: { 
       title: { 
         display: true, 
-        text: 'count',
+        text: 'Count',
         font: {
           size: 18,
-          style: 'Bold',
           family: 'Helvetica Neue',
         }
       }, 
@@ -75,38 +75,40 @@ const options = {
 };
 
 const SpetrumChart = () => {
+  const {DarkTheme} = useContext(ThemeContext)
+
+
   var array = [];
-  for (var i = 0; i < 4096; i++) {
+  for (var i = 0; i < 4001; i++) {
     array.push(i);
   }
   const [data, setData] = useState({
     labels: array,
     datasets: [
       {
-        label: 'Dataset',
+        label: '',
         data: [],
-        borderColor: 'rgb(255, 99, 132)',
-        backgroundColor: 'rgba(25, 90, 13, 0.5)',
+        borderColor: `${DarkTheme?'rgb(255, 99, 132)':'black'}`,
+        backgroundColor: 'rgba(99, 132, 0.5)',
       }
     ]
   });
   useEffect(() => {
-    const starCountRef = ref(database, 'data/Spetrum');
+    const starCountRef = ref(database, 'data/Spetrum Waveform');
     onValue(starCountRef, (snapshot) => {
       const Dataset = snapshot.val();
       setData({
         labels: array,
         datasets: [
           {
-            label: 'Dataset ID',
+            label: '',
             data: Dataset,
-            borderColor: 'rgb(255, 99, 132)',
+            borderColor: `${DarkTheme?'rgb(255, 99, 132)':'black'}`,
             backgroundColor: 'rgba(99, 132, 0.5)',
           }
         ]
       })
-    }, [data.datasets[0].data]);
-    //   
+    });
   })
   return (
     <div className='analytics' style={{ width: '100%', height: '100%' }}>

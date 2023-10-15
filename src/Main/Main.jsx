@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import Header from "../Components/HeaderTemplate/Header";
-import Content from "../Content/Content";
+// import Content from "../Content/Content";
 import { ThemeContext } from "../ThemeContext";
+import AppRoutes from "../AppRoutes/AppRoutes";
 import "./Main.css";
 
 const Main = () => {
@@ -10,7 +11,8 @@ const Main = () => {
   return (
     <div className={`main ${DarkTheme && "dark"}`}>
       <Header />
-      <Content />
+      {/* <Content /> */}
+      <AppRoutes></AppRoutes>
     </div>
   );
 };

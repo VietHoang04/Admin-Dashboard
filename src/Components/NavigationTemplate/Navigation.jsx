@@ -1,4 +1,6 @@
 import Nav from '../NavIconTemplate/Nav'
+import NavNoHover from '../NavIconTemplate/NavNoHover'
+// import NavLink from '../NavIconTemplate/NavLink'
 // import { useState, useContext } from 'react'
 import './Navigation.css'
 import { AiOutlineUsergroupAdd } from "react-icons/ai"
@@ -24,19 +26,19 @@ const Navigation = () => {
         <span >HCMUS</span>
       </header>
       <div className='major'>
-        <Nav title="ĐIỆN TỬ VIỄN THÔNG" Icon={IoMdSchool} ></Nav>
+        <NavNoHover title="ĐIỆN TỬ VIỄN THÔNG" Icon={IoMdSchool} ></NavNoHover>
       </div>
       <div className="divider"></div>
-      <Nav title="PHẠM VIỆT HOÀNG" Icon={AiOutlineUsergroupAdd} ></Nav>
+      <NavNoHover title="PHẠM VIỆT HOÀNG" Icon={AiOutlineUsergroupAdd} ></NavNoHover>
       <div className='mssv'>
-        <Nav title="19200317" Icon={BsFillPersonVcardFill} ></Nav>
+        <NavNoHover title="19200317" Icon={BsFillPersonVcardFill} ></NavNoHover>
       </div>
-      <Nav title="NGUYỄN QUỐC HOÀNG" Icon={AiOutlineUsergroupAdd} ></Nav>
+      <NavNoHover title="NGUYỄN QUỐC HOÀNG" Icon={AiOutlineUsergroupAdd} ></NavNoHover>
       <div className='mssv'>
-        <Nav title="19200316" Icon={BsFillPersonVcardFill} ></Nav>
+        <NavNoHover title="19200316" Icon={BsFillPersonVcardFill} ></NavNoHover>
       </div>
       <div className="divider"></div>
-      <Nav 
+      <Nav
         title={`${DarkTheme ? "Switch to Light Theme" : "Switch to Dark Theme"}`}
         Icon={MdSwapHoriz}
         onClick={changeTheme}

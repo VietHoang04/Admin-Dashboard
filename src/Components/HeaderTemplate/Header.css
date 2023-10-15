@@ -12,8 +12,7 @@ header {
     display: flex;
     align-items: center;
     gap: 25px;
-    padding-left: 1100px;
-    padding-top: 10px;
+    padding-right: 15px;
   }
   
   header .tools .icon {
@@ -23,5 +22,34 @@ header {
   }
   header .tools .icon:hover {
     color: var(--color);
+  }
+
+  .topnav {
+    background: linear-gradient(10deg, #810551, #05454d);;
+    overflow: hidden;
+    margin-left: 120px;
+    border-radius: 10px;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 26px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: rgba(255, 255, 255, 0.258);
+    color: white ;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #037986;
+    color: white;
   }
   

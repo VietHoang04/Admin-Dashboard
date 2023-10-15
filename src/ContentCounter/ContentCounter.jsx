@@ -1,48 +1,41 @@
-import "./Content.css"
+import "./ContentCounter.css"
 import { ThemeContext } from "../ThemeContext"
 import { useContext } from "react"
 import { CiTimer } from 'react-icons/ci'
 import { GiLightningFrequency } from 'react-icons/gi'
-import { FaGreaterThan } from 'react-icons/fa'
-import { FaLessThan } from 'react-icons/fa'
-import { MdShutterSpeed } from 'react-icons/md'
+import { TbSum } from 'react-icons/tb'
+import { ImLoop } from 'react-icons/im'
 import { useEffect, useState } from 'react';
 import { ref, onValue } from "firebase/database";
 import { database } from '../firebase';
-import SpetrumChart from "../Components/Chart/Spetrum"
-import Card from '../Components/CardTemplate/Card' 
+import CardCounter from "../Components/CardTemplate/CardCounter"
+// import Card from '../Components/CardTemplate/Card' 
 
-const Content = () => {
+const ContentCounter = () => {
     const {DarkTheme} = useContext(ThemeContext)
-    const [CountOfPeak, setCountOfPeak] = useState(0);
-    const [Frequency, setFrequency] = useState(0);
-    const [LowerThreshold, setLowerThreshold] = useState(0);
-    const [UpperThreshold, setUpperThreshold] = useState(0);
-    const [RealTime, setRealTime] = useState(0);
+    const [TotalCount, setTotalCount] = useState('0');
+    const [Frequency, setFrequency] = useState('0');
+    const [CountPerSec, setCountPerSec] = useState('0');
+    const [RealTime, setRealTime] = useState('0');
 
     useEffect(() => {
-        const CountOfPeak = ref(database, 'data/Count Of Peaks');
-        onValue(CountOfPeak, (snapshot) => {
+        const TotalCount = ref(database, 'data/Total Count');
+        onValue(TotalCount, (snapshot) => {
           const Data = snapshot.val();
-          setCountOfPeak(Data)
+          setTotalCount(Data)
         });
 
-        const Frequency = ref(database, 'data/Frequency (Hz)');
+        const Frequency = ref(database, 'data/Counter Frequency');
         onValue(Frequency, (snapshot) => {
           const Data = snapshot.val();
           setFrequency(Data)
         });
 
-        const LowerThreshold = ref(database, 'data/LowerThreshold');
-        onValue(LowerThreshold, (snapshot) => {
-          const Data = snapshot.val();
-          setLowerThreshold(Data)
-        });
 
-        const UpperThreshold = ref(database, 'data/Upper Threshold');
-        onValue(UpperThreshold, (snapshot) => {
+        const CountPerSec = ref(database, 'data/Count Per Second');
+        onValue(CountPerSec, (snapshot) => {
           const Data = snapshot.val();
-          setUpperThreshold(Data)
+          setCountPerSec(Data)
         });
 
         const RealTime = ref(database, 'data/Real Time (s)');
@@ -51,10 +44,9 @@ const Content = () => {
           setRealTime(Data)
         });
       })
-
   return (
     <div className={`content ${DarkTheme && "dark"}`}>
-        <div className="row header">
+        <div className="row header1">
             <CiTimer className="cog" ></CiTimer>
             <h1 className="txt-head">Real Time</h1>
             <div className="divide"></div>
@@ -97,11 +89,10 @@ const Content = () => {
                 <path d="M0 0v5.63C149.93 59 314.09 71.32 475.83 42.57c43-7.64 84.23-20.12 127.61-26.46 59-8.63 112.48 12.24 165.56 35.4C827.93 77.22 886 95.24 951.2 90c86.53-7 172.46-45.71 248.8-84.81V0z" />
             </svg>
         </div>
-        <div className="row header">
-            <Card Icon={MdShutterSpeed} title="Count Of Peak" value={CountOfPeak}></Card>
-            <Card Icon={GiLightningFrequency} title="Frequency" value={Frequency}></Card>
-            <Card Icon={FaLessThan} title="Lower Threshold" value={LowerThreshold}></Card>
-            <Card Icon={FaGreaterThan} title="Upper Threshold" value={UpperThreshold}></Card>
+        <div className="row header1">
+            <CardCounter Icon={TbSum} title="Total Count" value={TotalCount}></CardCounter>
+            <CardCounter Icon={ImLoop} title="Count Per Second (CPS)" value={CountPerSec}></CardCounter>
+            <CardCounter Icon={GiLightningFrequency} title="Counter Frequency" value={Frequency}></CardCounter>
             <svg
                 className="bg-waves__"
                 preserveAspectRatio="none"
@@ -125,12 +116,12 @@ const Content = () => {
                 <path d="M0 0v5.63C149.93 59 314.09 71.32 475.83 42.57c43-7.64 84.23-20.12 127.61-26.46 59-8.63 112.48 12.24 165.56 35.4C827.93 77.22 886 95.24 951.2 90c86.53-7 172.46-45.71 248.8-84.81V0z" />
             </svg>
         </div>
-        <span className="section-title">OVER VIEW</span>
+        {/* <span className="section-title">OVER VIEW</span>
         <div className="row square">
             <SpetrumChart></SpetrumChart>
-        </div>
+        </div> */}
     </div>
   )
 }
 
-export default Content
+export default ContentCounter

@@ -5,7 +5,7 @@ import Navigation from './Components/NavigationTemplate/Navigation'
 import Main from "./Main/Main"
 
 function App() {
-  const [DarkTheme, setDarkTheme] = useState(true);
+  const [DarkTheme, setDarkTheme] = useState(false);
 
   return (
     <ThemeContext.Provider value={{ DarkTheme, setDarkTheme }}>
