@@ -21,7 +21,7 @@ const Navigation = () => {
     <div className={`navigation ${DarkTheme && "dark"}`}>
       <header>
         <div className="profile">
-          <img src="https://th.bing.com/th/id/OIP.3xxAdjBkqgH_MWgz3zuCyQAAAA?pid=ImgDet&rs=1" alt="user-img" className="profile-img" />
+          <img src="https://inkythuatso.com/uploads/images/2021/12/logo-khoa-hoc-tu-nhien-inkythuatso-01-25-16-11-19.jpg" alt="user-img" className="profile-img" />
         </div>
         <span >HCMUS</span>
       </header>
